@@ -1,0 +1,717 @@
+\documentclass[spanish,notitlepage,letterpaper]{article} 
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[spanish]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mdframed}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{mathtools}
+\usepackage{wallpaper}
+\usepackage{xcolor}
+\usepackage{bigints}
+\usepackage{subcaption}
+\usepackage[top=2cm, bottom=2cm, outer=0cm, inner=0cm]{geometry}
+\usepackage{makeidx}
+\usepackage{color}
+\usepackage[most]{tcolorbox}
+\definecolor{labelcolor}{RGB}{100,0,0}
+\usepackage[Lenny]{fncychap}
+\pagestyle{fancy} 
+\rhead{} 
+\chead{} 
+\lfoot{} 
+\cfoot{} 
+\rfoot{\thepage} \voffset = -0.25in \textheight= 8.0in \textwidth = 6.5in \oddsidemargin = 0.in \headheight = 20pt \headwidth = 6.5in \renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0,5pt}
+\makeindex
+
+\begin{document}
+
+\title{Newtonian Master}
+\maketitle
+
+\section{Estrellas con ecuación de estado master (Caso Isótropo)}
+
+Resolveremos el sistema de ecuaciones de estructura estelar asumiendo una relación $P=P(\rho)$ un poco más realista. Para determinar las incógnitas $P(r)$, $\rho(r)$ y $m(r)$ de la ecuación de equilibrio hidrostático 
+\begin{equation}
+\frac{\mathrm{d}P(r)}{\mathrm{d}r}= -\frac{\mathrm{d}\Phi(r)}{\mathrm{d}r} =  -\frac{Gm(r)}{r^2}\rho(r)
+\label{equilibrio}
+\end{equation}
+Donde el potencial gravitacional $\Phi(r)$ satisface la ecuación de Poisson  
+\begin{equation}
+\frac{1}{r^2} \frac{\mathrm{d}}{\mathrm{d}r} \left[r^2\frac{\mathrm{d}\Phi}{\mathrm{d}r}\right]= 4\pi G \rho. 
+\end{equation}
+ 
+
+Derivando con respecto a $r$ la ecuación (\ref{equilibrio})
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho}\frac{\mathrm{d}P}{\mathrm{d}r}\right]=-G \frac{\mathrm{d} m}{\mathrm{d}r}=-4\pi G r^2 \rho 
+\end{equation}
+
+Utilizaremos la siguiente ecuación de estado
+
+\begin{equation}
+\tcboxmath{
+P=\kappa \rho^\gamma +\alpha \rho -\beta 
+}
+\label{ecumaster}
+\end{equation}
+
+Por lo que:
+\begin{eqnarray}
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} \left(\gamma \kappa \rho^{\gamma -1 }+\alpha \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] =\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} \left(\gamma \kappa \rho^{\gamma -1 } \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} + \alpha\frac{r^2}{\rho}   \frac{\mathrm{d}\rho}{\mathrm{d}r}\right]&=& -4\pi G r^2 \rho \nonumber \\
+\gamma \kappa \frac{\mathrm{d}}{\mathrm{d}r} \left[r^2  \rho^{\gamma -2 } \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] + \alpha \frac{\mathrm{d}}{\mathrm{d}r} \left[ \frac{r^2}{\rho}   \frac{\mathrm{d}\rho}{\mathrm{d}r}\right] &=& -4\pi G r^2 \rho 
+\end{eqnarray}
+
+Hemos reducido el sistema a una ecuación diferencial de segundo orden para $\rho(r)$. Como tal, se requieren dos condiciones de borde para encontrar una solución particular:
+\begin{itemize}
+\item La densidad debe ser finita en el centro de la estrella $\rho(0) = \rho_c < \infty$
+\item El gradiente de densidad debe ser nulo en el centro de la estrella. Esto implica que la densidad alcanza su máximo en el centro de la estrella (ya que la presión es monótonamente decreciente): $\rho'(0) = 0$.
+\end{itemize}
+
+
+Ahora bien, para simplificar  se introducen las variables adimensionales para la coordenada radial $\xi$ y la densidad $\Psi(\xi)$, relacionadas con sus respectivas cantidades físicas por: 
+\begin{equation}
+\tcboxmath{
+r=a\xi \,, \qquad  \rho=\rho_c \Psi(\xi)^{\frac{1}{\gamma-1}}
+}
+\label{cambiovariable}
+\end{equation}
+
+Con estás nuevas variables tenemos:
+\begin{eqnarray*}
+\gamma \kappa \frac{\mathrm{d}}{\mathrm{d}r} \left[r^2  \rho^{\gamma -2 } \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] + \alpha \frac{\mathrm{d}}{\mathrm{d}r} \left[ \frac{r^2}{\rho}   \frac{\mathrm{d}\rho}{\mathrm{d}r}\right] &=& -4\pi G r^2 \rho \\
+\gamma \kappa \frac{\mathrm{d}}{\mathrm{d}(a\xi)} \left[(a\xi)^2  \rho^{\gamma -2 } \frac{\mathrm{d}\rho}{\mathrm{d}(a\xi)} \right] + \alpha \frac{\mathrm{d}}{\mathrm{d}(a\xi)} \left[ \frac{(a\xi)^2}{\rho}   \frac{\mathrm{d}\rho}{\mathrm{d}(a\xi)}\right] &=& -4\pi G (a\xi)^2 \rho \\
+\gamma \kappa \frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2  \left(\rho_c \Psi^{\frac{1}{\gamma-1}}\right)^{\gamma -2 } \frac{\mathrm{d}(\rho_c \Psi^{\frac{1}{\gamma-1}})}{\mathrm{d}\xi} \right] + \alpha \frac{\mathrm{d}}{\mathrm{d}\xi} \left[ \frac{\xi^2}{\rho_c \Psi^{\frac{1}{\gamma-1}}}   \frac{\mathrm{d}(\rho_c \Psi^{\frac{1}{\gamma-1}})}{\mathrm{d}\xi}\right] &=& -4\pi G a^2 \xi^2 \rho_c \Psi^{\frac{1}{\gamma-1}}\\ 
+\rho_c^{\gamma -2 }  \gamma \kappa \frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2   \Psi^{\frac{\gamma -2}{\gamma-1}}\  \frac{\rho_c}{\gamma-1}\Psi^{-\frac{\gamma-2}{\gamma-1}}   \ \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} \right] + \alpha \frac{\mathrm{d}}{\mathrm{d}\xi} \left[ \frac{\xi^2}{\rho_c \Psi^{\frac{1}{\gamma-1}}} \frac{\rho_c}{\gamma-1}\Psi^{-\frac{\gamma-2}{\gamma-1}}   \ \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}   \right] &=& -4\pi G a^2 \xi^2 \rho_c \Psi^{\frac{1}{\gamma-1}}\\
+\rho_c^{\gamma -2 }  \gamma \kappa \frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2    \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} \right] + \frac{\alpha}{\rho_c} \frac{\mathrm{d}}{\mathrm{d}\xi} \left[ \frac{\xi^2}{ \Psi}  \ \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}   \right] &=& -4\pi G a^2 \xi^2 (\gamma-1) \Psi^{\frac{1}{\gamma-1}} \\
+\rho_c^{\gamma -2 }  \gamma \kappa \frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2    \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} \right] + \frac{\alpha}{\rho_c} \frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[  \frac{\xi^2}{ \Psi}    \ \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}   \right] &=& -4\pi G a^2  (\gamma-1) \Psi^{\frac{1}{\gamma-1}} \\
+ \frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2    \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} \right] + \frac{\alpha}{\gamma \kappa \rho_c^{\gamma -1 } } \frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[  \frac{\xi^2}{ \Psi}    \ \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}   \right] &=& -\frac{4\pi G a^2  (\gamma-1)}{\gamma \kappa \rho_c^{\gamma -2 }  } \Psi^{\frac{1}{\gamma-1}} 
+\end{eqnarray*}
+
+Si definimos:
+\begin{equation}
+\tcboxmath{
+a^2=\frac{\gamma \kappa \rho_c^{\gamma -2 } }{4\pi G   (\gamma-1)} \,,\quad
+b= \frac{\alpha}{\gamma \kappa \rho_c^{\gamma -1 } } \,,\quad n=\frac{1}{\gamma-1}
+}
+\end{equation}
+Tenemos que:
+\begin{equation}
+ \frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2    \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} \right] +  \frac{b}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[  \frac{\xi^2}{ \Psi}    \ \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}   \right] + \Psi^{n} =0
+\end{equation}
+o equivalentemente lo que llamaremos la ecuación de Lane-Emden Master $(\gamma \neq 1)$
+\begin{equation}
+\tcboxmath{
+\frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2 \left(1+ \frac{b}{ \Psi}  \right) \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}\right]  + \Psi^{n} =0
+ }
+\end{equation}
+Y las condiciones de borde:
+\begin{enumerate}
+\item 
+\begin{equation}
+ \Psi(0)=\left[ \frac{\rho(0)}{\rho_c}\right]^{\gamma-1}=\left[ \frac{\rho_c}{\rho_c}\right]^{\gamma-1}=1
+\end{equation}
+\item 
+\begin{equation}
+ \Psi'(0)=\left. \frac{\mathrm{d}}{\mathrm{d} r} \left[ \frac{\rho}{\rho_c}\right]^{\gamma-1}\right]_{r=0} = \left.(\gamma-1)\frac{\rho^{\gamma-2}}{\rho_c^{\gamma-1}}\frac{\mathrm{d}\rho}{\mathrm{d} r}\right]_{r=0}= (\gamma-1)\frac{\rho_c^{\gamma-2}}{\rho_c^{\gamma-1}} \left[\frac{\mathrm{d}\rho}{\mathrm{d} r}\right]_{r=0}=0
+\end{equation}
+\end{enumerate}
+
+Para el caso $\gamma = 1$ tenemos ahora que  $P=(\kappa +\alpha) \rho  -\beta = {\hat \kappa} \rho  -\beta$ (Esfera Isoterma)
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} {\hat \kappa}  \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] ={\hat \kappa}  \frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho}  \frac{\mathrm{d}\rho}{\mathrm{d}r} \right]= -4\pi G r^2 \rho 
+\end{equation}
+
+Si ahora
+\begin{equation}
+\tcboxmath{
+r=a\xi \,, \qquad  \rho= \rho_c {\rm e}^{-\Psi}
+}
+\label{cambiovar2}
+\end{equation}
+resulta 
+\begin{eqnarray*}
+{\hat \kappa}  \frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho}  \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] &=& -4\pi G r^2 \rho  \\
+{\hat \kappa}  \frac{\mathrm{d}}{\mathrm{d}(a\xi)} \left[\frac{(a\xi)^2}{\rho_c {\rm e}^{-\Psi}}  \frac{\mathrm{d}( \rho_c {\rm e}^{-\Psi} )}{ \mathrm{d}(a\xi)} \right] &=& -4\pi G (a\xi)^2 \rho_c {\rm e}^{-\Psi}  \\
+\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\frac{\xi^2}{\rho_c {\rm e}^{-\Psi} } (-\rho_c {\rm e}^{-\Psi} ) \frac{\mathrm{d} \Psi(\xi)}{\mathrm{d}\xi} \right] &=& -\frac{4\pi G a^2\xi^2 }{ {\hat \kappa} } \rho_c {\rm e}^{-\Psi} \\
+-\frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[{\xi^2} \frac{\mathrm{d} \Psi(\xi)}{\mathrm{d}\xi} \right] &=& -\frac{4\pi G a^2 \rho_c }{ {\hat \kappa} }  {\rm e}^{-\Psi}
+\end{eqnarray*}
+Ahora
+\begin{equation}
+a^2= \frac{{\hat \kappa} }{4\pi G  \rho_c}
+\end{equation}
+
+Quedando
+\begin{equation}
+\tcboxmath{
+\frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[{\xi^2} \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} \right] ={\rm e}^{-\Psi}
+}
+\end{equation}
+
+Que debe resolverse numéricamente con las condiciones iniciales
+\begin{equation}
+\Psi(0)=0 \,,\qquad \Psi'(0)=0
+\end{equation}
+
+
+
+\subsection{Propiedades físicas de las funciones de Lane-Emden}
+
+
+La propiedad básica que satisfacen las soluciones $\Psi(\xi)$ de la ecuación de Lane-Emden es ${\mathrm{d}\Psi }{\mathrm{d}\xi}<0$, es decir, son monótonamente decrecientes desde su máximo en el origen $\Psi(\xi = 0) = 1$. Esto equivalente físicamente a que la densidad sea máxima en el centro de la estrella: $\rho(r = 0) = \rho_c$, y que decrezca conforme la coordenada radial aumenta. Para probar esta propiedad, nos remitimos a la ecuación de equilibrio hidrostático 
+\begin{equation}
+\frac{\mathrm{d}P}{\mathrm{d}r}=\left(\gamma \kappa \rho^{\gamma -1 }+\alpha \right) \frac{\mathrm{d}\rho}{\mathrm{d}r}= -\frac{Gm}{r^2}\rho
+\end{equation}
+
+Al introducir las nuevas variables:
+\begin{eqnarray*}
+\left(\gamma \kappa \left(\rho_c \Psi^{\frac{1}{\gamma-1}}\right)^{\gamma -1}+\alpha \right) \frac{\mathrm{d}(\rho_c \Psi^{\frac{1}{\gamma-1}})}{\mathrm{d}(a\xi)} &=&-\frac{Gm}{(a\xi)^2}\rho_c \Psi^{\frac{1}{\gamma-1}}\\
+\frac{1}{a}\left(\gamma \kappa \rho_c^{\gamma -1} \Psi+\alpha \right) \frac{\rho_c}{\gamma-1}\Psi^{-\frac{\gamma-2}{\gamma-1}}   \ \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} &=&-\frac{Gm}{(a\xi)^2}\rho_c \Psi^{\frac{1}{\gamma-1}}\\
+ \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} &=&-\frac{\frac{Gm} {(a\xi)^2} \rho_c \Psi^{\frac{1}{\gamma-1}}}{\frac{1}{a}\left(\gamma \kappa \rho_c^{\gamma -1} \Psi+\alpha \right) \frac{\rho_c}{\gamma-1}\Psi^{-\frac{\gamma-2}{\gamma-1}}  }=-\frac{Gm(\gamma-1)}{a \xi^2\left(\gamma \kappa \rho_c^{\gamma -1} \Psi+\alpha \right)   }<0 \\
+\end{eqnarray*}
+Donde se observa fácilmente que todos los factores del lado derecho son definidos positivos por requerimientos físicos. Ahora bien, en base a esta consideración es que podemos hallar las siguientes variables características de una estrella modelada por la ecuación de estructura de Lane-Emden.
+
+
+Por consideraciones físicas, es de esperar que debido al comportamiento decreciente de la densidad mencionado, exista un punto donde se llegue al borde de la estrella. En la superficie de la estrella se tiene que:
+\begin{equation}
+\left\{
+\begin{tabular}{ccl}
+$P(r=r_b)=0$ & $ \Rightarrow $ & $\beta=\kappa \rho_b^\gamma +\alpha \rho_b$\\
+$P(r=0)=P_c$ & $ \Rightarrow $ & $P_c=\kappa \rho_c^\gamma +\alpha \rho_c-\beta$
+\end{tabular}
+\right.
+\end{equation}
+
+Debe existir un punto $r_b=a\xi_1$ donde $P(r_b)=0$.  A la coordenada radial $r$ donde esto sucede se le define como el radio de la estrella. 
+
+Podemos escribir la presión en función de las nuevas variables
+\begin{eqnarray*}
+\mathcal{P}&=& \kappa \rho^\gamma  +\alpha \rho -\beta\\
+&=& \kappa \rho_c^\gamma \Psi^{\frac{\gamma}{\gamma-1}}  +\alpha \rho_c \Psi^{\frac{1}{\gamma-1}} -\beta \\ 
+&=& \kappa \rho_c^\gamma \Psi^{\frac{\gamma}{\gamma-1}}  +\gamma \kappa b \rho_c^{\gamma-1} \rho_c \Psi^{\frac{1}{\gamma-1}} -\beta \\
+&=& \kappa \rho_c^\gamma \Psi^{\frac{\gamma}{\gamma-1}}  +\gamma \kappa b \rho_c^{\gamma}  \Psi^{\frac{1}{\gamma-1}} -\beta = \kappa \rho_c^\gamma \Psi^{\frac{1}{\gamma-1}} \left(\Psi  +\gamma  b  \right) -\beta 
+\end{eqnarray*}
+
+Por lo tanto:
+\begin{equation}
+\tcboxmath{
+\mathcal{P}=\kappa \rho_c^\gamma \Psi^{\frac{1}{\gamma-1}} \left(\Psi +\gamma  b  \right) -\beta
+}
+\label{Pmaster}
+\end{equation}
+
+En la superficie: $\xi=\xi_1$
+\begin{equation}
+\mathcal{P}=0=\kappa \rho_c^\gamma \Psi(\xi_1)^{\frac{1}{\gamma-1}} \left(\Psi(\xi_1)  +\gamma  b  \right) -\beta \,\, \Rightarrow \,\, 
+\beta= \kappa \rho_c^\gamma \Psi(\xi_1)^{\frac{1}{\gamma-1}} \left(\Psi(\xi_1) +\gamma  b  \right)
+\end{equation}
+
+Al sustituir $\beta$ en (\ref{Pmaster}) resulta
+\begin{eqnarray}
+\mathcal{P}&=&\kappa \rho_c^\gamma \Psi^{\frac{1}{\gamma-1}} \left(\Psi +\gamma  b  \right) -\kappa \rho_c^\gamma \Psi(\xi_1)^{\frac{1}{\gamma-1}} \left(\Psi(\xi_1)  +\gamma  b  \right) \nonumber\\
+&=&\kappa \rho_c^\gamma \left[\Psi^{\frac{1}{\gamma-1}} \left(\Psi  +\gamma  b  \right) -\Psi(\xi_1)^{\frac{1}{\gamma-1}} \left(\Psi(\xi_1)  +\gamma  b  \right) \right]
+\label{Pmaster2}
+\end{eqnarray}
+
+En el centro $\xi=0$ de la estrella
+\begin{eqnarray}
+\mathcal{P}_c&=&\kappa \rho_c^\gamma \left[\Psi(0)^{\frac{1}{\gamma-1}} \left(\Psi(0)  +\gamma  b  \right) -\Psi(\xi_1)^{\frac{1}{\gamma-1}} \left(\Psi(\xi_1) +\gamma  b  \right) \right] \nonumber \\
+&=& \kappa \rho_c^\gamma \left[ 1  +\gamma  b   -\Psi(\xi_1)^{\frac{1}{\gamma-1}} \left(\Psi(\xi_1)  +\gamma  b  \right) \right] \,\, \Rightarrow \,\,  \kappa= \frac{\mathcal{P}_c}{\rho_c^\gamma \left[ 1  +\gamma  b   -\Psi(\xi_1)^{\frac{1}{\gamma-1}} \left(\Psi(\xi_1)  +\gamma  b  \right) \right]}
+\label{kappamaster}
+\end{eqnarray}
+y por lo tanto, al sustituir $\kappa$ en (\ref{Pmaster2})
+\begin{equation}
+\tcboxmath{
+\frac{\mathcal{P}}{\mathcal{P}_c}=\frac{\Psi^{\frac{1}{\gamma-1}} \left[\Psi  +\gamma  b  \right] -\Psi_1^{\frac{1}{\gamma-1}} \left[\Psi_1  +\gamma  b  \right] }{ 1  +\gamma  b   -\Psi_1^{\frac{1}{\gamma-1}} \left[\Psi_1 +\gamma  b  \right] } 
+}
+\end{equation}
+donde $\Psi_1=\Psi(\xi_1)$. 
+
+En función de $n$
+\begin{equation}
+\tcboxmath{
+\frac{\mathcal{P}}{\mathcal{P}_c}=\frac{\Psi^{n} \left[\Psi  +\left(1+\frac1n\right)   b  \right] -\Psi_1^{n} \left[\Psi_1  +\left(1+\frac1n\right)  b  \right] }{ 1  +\left(1+\frac1n\right)   b   -\Psi_1^{n} \left[\Psi_1  +\left(1+\frac1n\right)  b  \right] } 
+}
+\end{equation}
+
+Notemos que cuando $\alpha=\beta=0$
+\begin{equation}
+\mathcal{P}= \kappa \rho_c^{1+\frac1n}  \Psi^{n+1}  
+\end{equation}
+
+\subsubsection{Velocidad del sonido}
+La velocidad del sonido viene dada por la ecuación
+\begin{eqnarray*}
+v_s^2=\frac{\mathrm{d}P}{\mathrm{d}\rho}&=& \gamma \kappa \rho^{\gamma-1}+\alpha=\gamma \kappa \left[\rho_c \Psi^{\frac{1}{\gamma-1}}\right]^{\gamma-1}+ \gamma \kappa b \rho_c^{\gamma-1} = \gamma \kappa \rho_c^{\gamma-1} \Psi + \gamma \kappa b \rho_c^{\gamma-1}
+\end{eqnarray*}
+
+\begin{equation}
+\tcboxmath{
+v_s^2=\gamma \kappa \rho_c^{\gamma-1}  \left[ \Psi+b\right]
+}
+\end{equation}
+En el centro de la estrella
+\begin{equation}
+{v_s}_c^2=\gamma \kappa \rho_c^{\gamma-1}  \left[ 1+b\right] \,\, \Rightarrow \,\, 
+b=\frac{{v_s}_c^2}{\gamma \kappa \rho_c^{\gamma-1}} -1
+\end{equation}
+
+
+\subsubsection{Radio estelar}
+El radio estelar es
+\begin{equation}
+r=a\xi \,\, \Rightarrow \,\, r_b = \left( \frac{\gamma \kappa \rho_c^{\gamma -2 } }{4\pi G   (\gamma-1)}  \right)^{\frac12} \xi_1
+\end{equation}
+
+Por lo tanto 
+\begin{equation}
+r_b = \left( \frac{\gamma \kappa \rho_c^{\gamma} }{4\pi G (\gamma-1)\rho_c^{2}}  \right)^{\frac12} \xi_1 = \left[ \frac{ \frac{\gamma\mathcal{P}_c}{  1  +\gamma  b   -\Psi_1^{\frac{1}{\gamma-1}} \left(\Psi_1  +\gamma  b  \right) } }{4\pi G (\gamma-1)}  \right]^{\frac12} \frac{\xi_1}{\rho_c}
+\label{RMaster}
+\end{equation}
+
+\begin{equation}
+\tcboxmath{
+r_b =\left[  \frac{\gamma\mathcal{P}_c}  { 4\pi G (\gamma-1) \left[1  +\gamma  b   -\Psi_1^{\frac{1}{\gamma-1}} \left(\Psi_1  +\gamma b \right) \right]  }  \right]^{\frac12} \frac{\xi_1}{\rho_c}
+}
+\end{equation}
+
+\subsubsection{Masa estelar}
+La masa de la estrella al interior del radio $r$ vendrá dada por la integral
+\begin{equation}
+m=4 \pi \int_0^r {\hat r}^2 \rho({\hat r}) \mathrm{d}{\hat r}=  4 \pi \int_0^r (a{\hat \xi})^2 \rho_c \Psi^{\frac{1}{\gamma-1}} \mathrm{d}{(\hat{a\xi})}= 4 \pi a^3\rho_c \int_0^r {\hat \xi}^2 \ \Psi^{\frac{1}{\gamma-1}} \ \mathrm{d}{\hat{\xi}}
+\end{equation}
+Como sabemos que:
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2 \left(1+ \frac{b}{\Psi}  \right) \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}\right]   = - \xi^2 \Psi^{\frac{1}{\gamma-1}} \,\, \Rightarrow \,\, \xi^2\left(1 + \frac{b}{\Psi}  \right) \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}= -\int_0^\xi {\bar \xi}^2 \Psi^{\frac{1}{\gamma-1}}\mathrm{d}{\bar \xi}
+\end{equation}
+
+Como ${\mathrm{d} \Psi}/{\mathrm{d}\xi} < 0$, tomando su valor absoluto  para la masa de la estrella al interior de $r$
+\begin{equation}
+\tcboxmath{
+m=4 \pi a^3\rho_c \ {\xi}^2\left(1+\frac{b}{\Psi}  \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|
+}
+\label{Mmaster}
+\end{equation}
+
+La masa total $m(r_b)=M$ es entonces
+\begin{equation}
+M=m(a\xi_1)=4 \pi a^3\rho_c \ \xi_1^2 \left(1+\frac{b}{\Psi_1}  \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1}
+\label{Mtotmaster}
+\end{equation}
+
+\subsubsection{Relación Masa-Radio}
+De la ecuación para el radio de la estrella podemos despejar la densidad central
+\begin{equation}
+\left(\frac{r_b}{\xi_1}\right)^2= \frac{\gamma \kappa \rho_c^{\gamma -2 } }{4\pi G   (\gamma-1)} \,\, \Rightarrow \,\,  \rho_c^{\gamma -2 }= \left(\frac{r_b}{\xi_1}\right)^2 \frac{4\pi G   (\gamma-1)}{\gamma \kappa}
+\end{equation}
+por lo que
+\begin{equation}
+ \rho_c= \left[\left(\frac{r_b}{\xi_1}\right)^2 \frac{4\pi G   (\gamma-1)}{\gamma \kappa}\right]^{\frac{1}{\gamma-2}}
+\end{equation}
+Expresión que podemos sustituir en la masa total (\ref{Mtotmaster})
+\begin{eqnarray*}
+M&=&4 \pi \left(\frac{\gamma \kappa \rho_c^{\gamma -2 } }{4\pi G   (\gamma-1)}\right)^{\frac32}  \rho_c \ \xi_1^2 \left(1+\frac{b}{\Psi_1} \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1}\\
+&=&4 \pi \left(\frac{\gamma \kappa }{4\pi G   (\gamma-1)}\right)^{\frac32} \rho_c^{\frac{3\gamma}{2}-3}  \rho_c \ \xi_1^2 \left(1+\frac{b}{\Psi_1}\right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1}\\
+&=&4 \pi \left(\frac{\gamma \kappa }{4\pi G   (\gamma-1)}\right)^{\frac32} \rho_c^{\frac{3\gamma}{2}-2} \ \xi_1^2 \left(1+\frac{b}{\Psi_1} \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1}\\
+&=&4 \pi \left(\frac{\gamma \kappa }{4\pi G   (\gamma-1)}\right)^{\frac32} \left[\left(\frac{r_b}{\xi_1}\right)^2 \frac{4\pi G   (\gamma-1)}{\gamma \kappa}\right]^{\frac{3\gamma-4}{2(\gamma-2)}} \ \xi_1^2 \left(1+\frac{b}{\Psi_1} \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1}\\
+&=&4 \pi {r_b}^{\frac{3\gamma-4}{\gamma-2}} \left(\frac{\gamma \kappa }{4\pi G   (\gamma-1)}\right)^{\frac32}  \ \left[ \frac{4\pi G   (\gamma-1)}{\gamma \kappa}\right]^{\frac{3\gamma-4}{2(\gamma-2)}} \ {\xi_1}^{-\frac{\gamma}{\gamma-2}} \ \left(1+\frac{b}{\Psi_1} \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1} \\
+\end{eqnarray*}
+Por lo tanto:
+\begin{equation}
+M=4 \pi {r_b}^{\frac{3\gamma-4}{\gamma-2}} \left(\frac{\gamma \kappa }{4\pi G   (\gamma-1)}\right)^{\frac{1}{2-\gamma}}   \ {\xi_1}^{-\frac{\gamma}{\gamma-2}} \ \left(1+\frac{b}{\Psi_1} \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1}
+\end{equation}
+
+\subsubsection{Densidad media}
+\begin{equation}
+{\bar \rho}(r)=\frac{m(r)}{\frac43\pi r^3} \,\, \Rightarrow \,\,
+{\bar \rho}(\xi)=\frac{m(\xi)}{\frac43\pi a^3 \xi^3}=  \frac{4 \pi a^3\rho_c \ {\xi}^2\left(1+\frac{b}{\Psi}\right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|}{\frac43\pi a^3 \xi^3} = \frac{3 \rho_c  \left(1+\frac{b}{\Psi}\right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|}{\xi}
+\end{equation}
+Si evaluamos la ecuación anterior en $\xi=\xi_1$
+\begin{equation}
+{\bar \rho}(\xi_1) = \frac{3 \rho_c  \left(1+\frac{b}{\Psi_1} \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1}}{\xi_1}
+\end{equation}
+es decir, la densidad media total de la estrella es un múltiplo de su densidad central. Pero como se puede expresar explícitamente en función de la masa y radio totales de la estrella:
+\begin{equation}
+{\bar \rho}(\xi_1) = \frac{3 \rho_c  \left(1+\frac{b}{\Psi_1} \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1} }{\xi_1}=\frac{M}{\frac43\pi r_b^3} \,\, \Rightarrow \,\,
+\rho_c= \frac{\xi_1}{4\pi \left(1+\frac{b}{\Psi_1} \right) \left|{\frac{\mathrm{d} \Psi}{\mathrm{d}\xi}}\right|_{\xi=\xi_1}} \frac{M}{r_b^3}
+\end{equation}
+La densidad central se puede determinar explícitamente si la masa y radio totales de la estrella son conocidos, además de $\gamma$. 
+
+\subsection{Soluciones exactas de la ecuación de Lane-Emden master}
+
+Caso $n=0$: La única solución analítica que podemos encontrar equivale al límite en que el índice adiabático $\gamma \rightarrow \infty$
+\begin{equation}
+P=\kappa \rho^\gamma +\alpha \rho -\beta 
+\end{equation}
+
+La ecuación Lane-Emden Master es
+\begin{equation}
+\frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2 \left(1+\frac{b}{\Psi}  \right) \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}\right] =-1
+\end{equation}
+cuya solución analítica resulta ser
+\begin{equation}
+\Psi_0=\exp \left[ -   {\bf W} \left(\frac {{\rm e}^{ - \Theta }}{b}\right) - \Theta \right] = \exp \left[ - {\bf W} \left(\frac {{\rm e}^{ - \Theta }}{b}\right)  \right] \exp \left[ - \Theta \right]= {\bf W} \left(\frac {{\rm e}^{ - \Theta }}{b}\right) b
+\end{equation}
+donde ${\bf W}(x)$ es función W de Lambert (o función Omega) y donde  hemos utilizado la propiedad ${\rm e}^{-{\bf W(x)}}= {\bf W(x)}/x$. Además hemos utilizado la variable 
+\begin{equation}
+\Theta(\xi)=\frac {{\xi}^{3}+2 \xi\,{\it C_2}-6\,{\it C_1}}{6 b\xi}
+\end{equation}
+
+Para que $\Psi_0$ sea finita en el origen debemos hacer ${\it C_1}=0$. Por lo tanto:
+\begin{equation}
+\Theta=\frac {{\xi}^{2}+2\,{\it C_2} }{6 b}
+\end{equation}
+Finalmente, aplicando la otra condición de borde
+\begin{equation}
+\Psi_0(0)=1={\bf W} \left(\frac {{\rm e}^{ - \Theta(0) }}{b}\right) b   \,\, \Rightarrow \,\, {\it C_2}= -3
+\end{equation}
+Es decir que
+\begin{equation}
+\Theta=\frac {{\xi}^{2}-6 }{6 b}
+\end{equation}
+
+Por lo tanto:
+\begin{equation}
+\tcboxmath{
+\Psi_0={\bf W} \left({\frac {{{\rm e}^{-\dfrac {{\xi}^{2}-6 }{6 b}}}}{b}}\right)b
+}
+\end{equation}
+Para $b \gg 1$ resulta que $\Psi_0 \rightarrow 1$. 
+
+Por otro lado, como
+\begin{equation}
+\Psi'_0= - \frac{  {\bf W} \left({\frac {{{\rm e}^{-\Theta }}}{b}}\right)}{  1+{\bf W} \left({\frac {{{\rm e}^{-\Theta  }}}{b}}\right) }  \frac {{\rm d} \Theta}{{\rm d}\xi}  = - \frac{  {\bf W} \left({\frac {{{\rm e}^{-\Theta }}}{b}}\right)}{  1+{\bf W} \left({\frac {{{\rm e}^{-\Theta  }}}{b}}\right) } {\frac {\xi}{3} }
+\end{equation}
+
+
+Entonces la  masa es
+\begin{eqnarray*}
+m&=&4 \pi a^3\rho_c \ {\xi}^2\left(1+ \frac{b}{ \Psi_0} \right) \left|{\frac{\mathrm{d} \Psi_0}{\mathrm{d}\xi}}\right| =  4 \pi a^3\rho_c \ {\xi}^2\left(1+ \frac{b}{ {\bf W} \left(\frac {{\rm e}^{ - \Theta }}{b}\right) b } \right)  \frac{  {\bf W} \left({\frac {{{\rm e}^{-\Theta }}}{b}}\right)}{  1+{\bf W} \left({\frac {{{\rm e}^{-\Theta  }}}{b}}\right) } {\frac {\xi}{3} } \\
+&=& \frac43 \pi a^3\rho_c \ {\xi}^3
+\end{eqnarray*}
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.1\linewidth]{Figuras/Gamma0Den}
+  \caption{1a}
+  \label{fig:sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.1\linewidth]{Figuras/Presion0}
+  \caption{1b}
+  \label{fig:sfig2}
+\end{subfigure}
+\caption{Solución exacta para $n=0$. Con $\xi_1=1$ y el valor de $b$ más pequeño es $b=$0.0001}
+\label{fig:fig}
+\end{figure}
+
+De la ecuación de equilibrio:
+\begin{eqnarray*}
+\frac{\mathrm{d}P(r)}{\mathrm{d}r}=-\frac{Gm(r)}{r^2}\rho(r) &\,\, \Rightarrow \,\, & \frac{\mathrm{d}\mathcal{P}}{\mathrm{d}(a\xi)}=-\frac{Gm}{a^2\xi^2}\rho_c \Psi_0 \\
+& & \frac{\mathrm{d}\mathcal{P}}{\mathrm{d}\xi}=-\frac{G\rho_c}{a} \frac{m}{\xi^2}\Psi_0 \\
+& & \frac{\mathrm{d}\mathcal{P}}{\mathrm{d}\xi}=-\frac{G\rho_c}{a} \frac{\frac43\,\pi\,{a}^{3}{\xi}^{3}{\rho_c}}{\xi^2} \ {\bf W} \left(\frac {{\rm e}^{ - \Theta }}{b}\right) b 
+\end{eqnarray*}
+Por lo tanto, la presión cuando $n=0$ la denotaremos por $\mathcal{P}_0$
+\begin{eqnarray*}
+\frac{\mathrm{d}\mathcal{P}}{\mathrm{d}\xi}&=&-\frac{4\,\pi\,{a}^{2}b G  \rho_c^2}{3} {\bf W} \left(\frac {{\rm e}^{ - \Theta }}{b}\right) \xi  \\
+\bigintssss \mathrm{d}\mathcal{P} &=& -\frac{4\,\pi\,{a}^{2}b G  \rho_c^2}{3 } \bigintssss  {\bf W} \left(\frac {{\rm e}^{ - \Theta }}{b}\right) \xi \mathrm{d}\xi \\ 
+\end{eqnarray*}
+
+En la superficie $\xi=\xi_1$ donde $\mathcal{P}_0(\xi_1)=0$
+
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.1\linewidth]{Figuras/Gamma_n}
+  \caption{1a}
+  \label{sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.1\linewidth]{Figuras/Presiones_n}
+  \caption{1b}
+  \label{sfig2}
+\end{subfigure}
+\caption{Integración numérica para $\Psi$ y las presiones internas}
+\label{fig01}
+\end{figure}
+
+El  radio de estas estrellas podrá ser determinado al considerar que para $\gamma \rightarrow \infty$ la presión $P  \rightarrow  \kappa \rho^\gamma$
+
+\begin{eqnarray*}
+ r_b &=& \lim_{\gamma \rightarrow \infty} \left( \frac{\gamma \kappa \rho_c^{\gamma -2 } }{4\pi G   (\gamma-1)}  \right)^{\frac12} \xi_1 = 
+  \lim_{\gamma \rightarrow \infty} \left( \frac{\gamma }{4\pi G   (\gamma-1)}  \right)^{\frac12}  \left(\kappa \rho_c^{\gamma -2 }\right)^{\frac12 } \xi_1 \\
+  &=&  \left(\frac{1}{4\pi G}\right)^{\frac12} \lim_{\gamma \rightarrow \infty} \left( \frac{\gamma }{ \gamma-1}  \right)^{\frac12} \left(\kappa \rho_c^{\gamma}\right)^{\frac12 } \rho_c^{-1} \xi_1 = \left(\frac{1}{4\pi G }\right)^{\frac12} \frac{\xi_1}{\rho_c} \left(\kappa \rho_c^{\gamma}\right)^{\frac12}  
+\label{RMaster0}
+\end{eqnarray*}
+
+Por lo tanto
+\begin{equation}
+ r_b =  \left(\frac{\mathcal{P}_c}{4\pi G }\right)^{\frac12} \frac{\xi_1}{\rho_c} 
+\end{equation}
+
+Y para la masa de la estrella 
+\begin{equation}
+M= \frac43\,\pi\,{a}^{3}\xi_1^{3}{\rho_c} = \frac43\,\pi\,\left({\frac{r_b}{\xi_1}}\right)^{3} \xi_1^3 {\rho_c} = \frac43\,\pi\, r_b^3 {\rho_c}= 
+ \frac43\,\pi\,{\left[\left(\frac{\mathcal{P}_c}{4\pi G }\right)^{\frac12} \frac{\xi_1}{\rho_c}    \right]}^{3}{\rho_c}
+\end{equation}
+lo que resulta en 
+\begin{equation}
+M=  \frac43\,\pi\,\left(\frac{\mathcal{P}_c}{4\pi G }\right)^{\frac32}  \frac{\xi_1^3}{\rho_c^2}
+\end{equation}
+
+
+\subsection{Soluciones numéricas de la ecuación de Lane-Emden master}
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/Gamma_nb1}
+  \caption{1a}
+  \label{fig:sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/Presiones_nb1}
+  \caption{1b}
+  \label{fig:sfig2}
+\end{subfigure}
+\caption{Integración numérica para $\Psi$ y las presiones internas}
+\label{fig:fig}
+\end{figure}
+Si queremos integrar numéricamente 
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2 \left(1+ \frac{b}{\Psi}  \right) \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}\right]  =- \xi^2 \Psi^{n} 
+\end{equation}
+o equivalentemente
+\begin{equation}
+ \frac {{\rm d}^{2} \Psi}{{\rm d}{\xi}^{2}}   =- \frac{ \Psi^{n+1} }{ b+\Psi} + \frac{1}{ \xi\,\Psi \left( b+\Psi \right)} \frac{ {\rm d}\Psi}{{\rm d}\xi}  \left( b\xi\,\frac {{\rm d}\Psi}{{\rm d}\xi} -2\,\Psi   \left( b+\Psi   \right)  \right)
+\end{equation}
+
+Demos realizar el siguiente cambio de variables:
+\begin{equation}
+\left\{
+\begin{tabular}{ccl}
+$X=\Psi$ & $ \Rightarrow $ & $X'=\Psi'=Y$\\
+$Y=\Psi'$ & $ \Rightarrow $ & $Y'=\Psi''$
+\end{tabular}
+\right.
+\end{equation}
+
+Y el resultado es un sistema de ecuaciones
+\begin{equation}
+\left\{
+\begin{tabular}{ll}
+$X'=Y$ &   \\
+ & \\
+$Y'= - \dfrac{ X^{n+1} }{ b+X} + \dfrac{Y\left( b\xi\,Y -2\,X   \left( b+X \right)  \right)}{ \xi\,X \left( b+X \right)} 
+$ &   
+\end{tabular}
+\right.
+\end{equation}
+que de debe resolver numéricamente con las condiciones iniciales
+\begin{equation}
+\left\{
+\begin{tabular}{cc}
+$X(0)=1$ & \\
+$Y(0)=0$ & 
+\end{tabular}
+\right.
+\end{equation}
+
+Como X es decreciente y positivo, eventualmente llegará hasta un punto  en donde se anule y posteriormente se vuelva negativo, pero antes de que esto ocurra la presión $\mathcal{P}(\xi)$ debe tener una primera raíz para algún valor $\xi=\xi_1$. Sin ambigüedad podemos hacer $\xi_1=1$ para el primer valor donde $\mathcal{P}(\xi=1)=0$, es decir la densidad en el borde será $X(1)=\Psi(1)=\Psi_1$.
+
+
+\begin{equation}
+\frac{\mathcal{P}}{\mathcal{P}_c}=\frac{X^{n} \left[X  +\left(1+\frac1n\right)   b  \right] -X(1)^{n} \left[X(1)  +\left(1+\frac1n\right)  b  \right] }{ 1  +\left(1+\frac1n\right)   b   -X(1)^{n} \left[X(1)  +\left(1+\frac1n\right)  b  \right] } 
+\end{equation}
+
+
+
+
+\section{Estrellas con ecuación de estado master (Caso Anisótropo)}
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/GammaA_b01h05}
+  \caption{}
+  \label{fig:sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/GammaA_b01h10}
+  \caption{}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/GammaA_b01h15}
+  \caption{}
+  \label{fig:sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/GammaA_b01h20}
+  \caption{}
+  \label{fig:sfig2}
+\end{subfigure}
+\caption{Integración numérica para $\Psi$ y las presiones internas}
+\label{fig:fig}
+\end{figure}
+Si permitimos que las presiones principales sean desiguales, entonces la ecuación de equilibrio hidrostático dice
+\begin{equation}
+\frac{\mathrm{d}P(r)}{\mathrm{d}r}= -\frac{\mathrm{d}\Phi(r)}{\mathrm{d}r}\rho(r)+\frac{2}{r}\left( P_{\perp} -P \right) =  -\frac{Gm(r)}{r^2}\rho(r)+\frac{2}{r}\left( P_{\perp} -P \right)
+\label{equilibrioani}
+\end{equation}
+donde $P$ y $P_{\perp}$ denotan las presiones radial y tangencial, respectivamente. Esta ecuación es el límite newtoniano de la ecuación generalizada Tolman-Opphenheimer-Volkoff para la materia anisótropa.
+
+Si consideramos la ecuación de estado (\ref{ecumaster}) 
+\begin{eqnarray*}
+\frac{r^2}{\rho} \frac{\mathrm{d}P}{\mathrm{d}r}  &=&  -{Gm}+\frac{2r}{\rho}\Delta\\
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} \left(\gamma \kappa \rho^{\gamma -1 }+\alpha \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] &=& = -4\pi G r^2 \rho +\frac{\mathrm{d}}{\mathrm{d}r}\left[\frac{2r}{\rho}\Delta\right]  
+\end{eqnarray*}
+Por otro lado tenemos:
+\begin{eqnarray*}
+\frac{\mathrm{d}P }{\mathrm{d}r}=\frac{\mathrm{d}}{\mathrm{d}r} \left(\kappa \rho^\gamma+\alpha \rho -\beta \right) &=& -\frac{\mathrm{d}\Phi}{\mathrm{d}r} \rho +\frac{2\Delta}{r} \\
+\left(\kappa \gamma \rho^{\gamma-2} + \frac{\alpha}{\rho} \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} &=& -\frac{\mathrm{d}\Phi}{\mathrm{d}r} +\frac{2\Delta}{r \rho } \\
+\frac{\mathrm{d}\Phi}{\mathrm{d}r} &=& -\left(\kappa \gamma \rho^{\gamma-2} + \frac{\alpha}{\rho} \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} +\frac{2\Delta}{r \rho }
+\label{equilibrioani}
+\end{eqnarray*}
+
+Si suponemos que $\Delta= \mathrm{C} r \frac{\mathrm{d}\Phi}{\mathrm{d}r} \rho$
+Entonces:
+\begin{eqnarray*}
+\Delta &=&  {\mathrm{C}r }\left[-\left(\kappa \gamma \rho^{\gamma-2} + \frac{\alpha}{\rho} \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} +\frac{2\Delta}{r \rho } \right]\rho \\
+\Delta &=&  {\mathrm{C}r }\left[-\left(\kappa \gamma \rho^{\gamma-1} + {\alpha} \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} +\frac{2\Delta}{r} \right] \\
+\Delta &=&  -{\mathrm{C}r }\left(\kappa \gamma \rho^{\gamma-1} + {\alpha} \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} +  {2{\mathrm{C} }\Delta} \\
+\left(1 - 2{\mathrm{C} }\right)\Delta &=&  -{\mathrm{C}r }\left(\kappa \gamma \rho^{\gamma-1} + {\alpha} \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} \\
+\end{eqnarray*}
+
+Por lo tanto:
+\begin{eqnarray*}
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} \left(\gamma \kappa \rho^{\gamma -1 }+\alpha \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] &=&  -4\pi G r^2 \rho -\frac{2 {\mathrm{C}}}{1 - 2{\mathrm{C} }}\frac{\mathrm{d}}{\mathrm{d}r}\left[\frac{r^2 \left(\kappa \gamma \rho^{\gamma-1} + {\alpha} \right)}{\rho} \frac{\mathrm{d}\rho}{\mathrm{d}r}  \right]  \\
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} \left(\gamma \kappa \rho^{\gamma -1 }+\alpha \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] + \frac{2 {\mathrm{C}}}{1 - 2{\mathrm{C} }}\frac{\mathrm{d}}{\mathrm{d}r}\left[\frac{r^2 \left(\kappa \gamma \rho^{\gamma-1} + {\alpha} \right)}{\rho} \frac{\mathrm{d}\rho}{\mathrm{d}r}  \right] &=&  -4\pi G r^2 \rho \\
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} \left(\gamma \kappa \rho^{\gamma -1 }+\alpha \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] \left[ 1+\frac{2 {\mathrm{C}}}{1 - 2{\mathrm{C} }}\right] &=&  -4\pi G r^2 \rho \\
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} \left(\gamma \kappa \rho^{\gamma -1 }+\alpha \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] \left[\frac{1}{1 - 2{\mathrm{C} }}\right] &=&  -4\pi G r^2 \rho \\
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho} \left(\gamma \kappa \rho^{\gamma -1 }+\alpha \right) \frac{\mathrm{d}\rho}{\mathrm{d}r} \right]  &=&  -4\pi h G r^2 \rho
+\end{eqnarray*}
+donde $h=1 - 2{\mathrm{C}}$
+
+Si introducimos el cambio de variables (\ref{cambiovariable})  entonces que para ($\gamma \neq 1$)
+\begin{equation}
+\tcboxmath{
+\frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[\xi^2 \left(1+ \frac{b}{ \Psi}  \right) \frac{\mathrm{d} \Psi}{\mathrm{d}\xi}\right]  + h \Psi^{n} =0
+ }
+\end{equation}
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/PresionesA_b01h05}
+  \caption{}
+  \label{fig:sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/PresionesA_b01h10}
+  \caption{}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/PresionesA_b01h15}
+  \caption{}
+  \label{fig:sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/PresionesA_b01h20}
+  \caption{}
+  \label{fig:sfig2}
+\end{subfigure}
+\caption{Integración numérica para $\Psi$ y las presiones internas}
+\label{fig:fig}
+\end{figure}
+
+
+En realidad lo que hay detrás del  ansatz es el ansatz siguiente:
+\begin{equation}
+\Delta=  - \frac{\mathrm{C} r }{1- 2\mathrm{C}}\frac{\mathrm{d}P }{\mathrm{d}r}
+\end{equation}
+
+
+
+Cuando $\gamma =1$ tenemos que $P={\hat \kappa} \rho -\beta$,  donde ${\hat \kappa}=\kappa+\alpha$
+
+\begin{eqnarray*}
+\frac{\mathrm{d}P }{\mathrm{d}r}=\frac{\mathrm{d}}{\mathrm{d}r} \left({\hat \kappa} \rho -\beta\right) &=& -\frac{\mathrm{d}\Phi}{\mathrm{d}r} \rho +\frac{2\Delta}{r} \\
+\frac{{\hat \kappa}}{\rho} \frac{\mathrm{d}\rho}{\mathrm{d}r} &=& -\frac{\mathrm{d}\Phi}{\mathrm{d}r} +\frac{2\Delta}{r \rho } \\
+\frac{\mathrm{d}\Phi}{\mathrm{d}r} &=& -\frac{{\hat \kappa}}{\rho} \frac{\mathrm{d}\rho}{\mathrm{d}r} +\frac{2\Delta}{r \rho}
+\end{eqnarray*}
+
+Volvemos a usar $\Delta= \mathrm{C} r \frac{\mathrm{d}\Phi}{\mathrm{d}r} \rho$
+\begin{eqnarray*}
+\Delta &=&  {\mathrm{C}r }\left[-\frac{{\hat \kappa}}{\rho} \frac{\mathrm{d}\rho}{\mathrm{d}r}+\frac{2\Delta}{r \rho} \right ]\rho = {\mathrm{C}r }\left[-{{\hat \kappa}}\frac{\mathrm{d}\rho}{\mathrm{d}r}+\frac{2\Delta}{r } \right ] = -{\hat \kappa} {\mathrm{C}r}\frac{\mathrm{d}\rho}{\mathrm{d}r} + {2\mathrm{C}}\Delta \\
+\left(1 - 2{\mathrm{C} }\right)\Delta &=&   -{\hat \kappa} {\mathrm{C}r}\frac{\mathrm{d}\rho}{\mathrm{d}r} \\
+\end{eqnarray*}
+Ahora resulta
+\begin{eqnarray*}
+\frac{r^2}{\rho} \frac{\mathrm{d}P}{\mathrm{d}r}  &=&  -{Gm}+\frac{2r}{\rho}\Delta\\
+{\hat \kappa}\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho}  \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] &=&  -4\pi G r^2 \rho +\frac{\mathrm{d}}{\mathrm{d}r}\left[\frac{2r}{\rho}\Delta\right]  \\
+{\hat \kappa}\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho}  \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] &=&  -4\pi G r^2 \rho -\frac{2{\hat \kappa} \mathrm{C}}{1 - 2{\mathrm{C} }}\frac{\mathrm{d}}{\mathrm{d}r}\left[\frac{r^2}{\rho} \frac{\mathrm{d}\rho}{\mathrm{d}r} \right] \\
+\frac{\mathrm{d}}{\mathrm{d}r} \left[\frac{r^2}{\rho}  \frac{\mathrm{d}\rho}{\mathrm{d}r} \right]  &=&  -\frac{4\pi G}{{\hat \kappa}} h r^2 \rho 
+\end{eqnarray*}
+
+Con e cambio de variable (\ref{cambiovar2})
+\begin{equation}
+\tcboxmath{
+\frac{1}{\xi^2}\frac{\mathrm{d}}{\mathrm{d}\xi} \left[{\xi^2} \frac{\mathrm{d} \Psi}{\mathrm{d}\xi} \right] =h {\rm e}^{-\Psi}
+}
+\end{equation}
+Ahora
+\begin{equation}
+a^2= \frac{{\hat \kappa} }{4\pi G  \rho_c}
+\end{equation}
+
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/PresionesA_b10h05}
+  \caption{}
+  \label{fig:sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/PresionesA_b10h10}
+  \caption{}
+  \label{fig:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/PresionesA_b10h15}
+  \caption{}
+  \label{fig:sfig1}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.12\linewidth]{Figuras/PresionesA_b10h20}
+  \caption{}
+  \label{fig:sfig2}
+\end{subfigure}
+\caption{Integración numérica para $\Psi$ y las presiones internas}
+\label{fig:fig}
+\end{figure}
+
+
+
+\end{document}
+
